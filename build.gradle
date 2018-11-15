@@ -1,0 +1,55 @@
+/*
+ */
+
+buildscript {
+	repositories {
+		jcenter()
+		mavenLocal()
+	}
+	dependencies {
+		classpath "com.marklogic:ml-gradle:3.10.0"
+	}
+}
+
+apply plugin: "com.marklogic.ml-gradle"
+
+repositories {
+	jcenter()
+
+	// Needed for mlcp dependencies
+	maven { url "https://developer.marklogic.com/maven2/" }
+
+	// Needed for hadoop dependencies for mlcp
+	maven { url "http://repository.cloudera.com/artifactory/cloudera-repos/" }
+}
+
+
+configurations {
+	// This configuration captures the dependencies for running mlcp (Content Pump). This is only needed if you want
+	// to run mlcp via Gradle tasks. If you do, using com.marklogic.gradle.task.MlcpTask is a useful starting point, as
+	// shown below.  Need to force to use certain version of xml-apis library.
+	mlcp {
+      resolutionStrategy {
+        force "xml-apis:xml-apis:1.4.01"
+      }
+    }
+}
+
+dependencies {
+	mlcp "com.marklogic:mlcp:8.0.6.3"
+	mlcp "org.apache.commons:commons-csv:1.2"
+	mlcp files("lib")
+}
+
+/**
+ * Import data.
+ */
+task importData(type: com.marklogic.gradle.task.MlcpTask) {
+	classpath = configurations.mlcp
+	command = "IMPORT"
+	database = mlAppConfig.contentDatabaseName
+	input_file_path = "data/docs.zip"
+    input_compressed=true
+ 	output_permissions = "rest-reader,read,rest-writer,update"
+	output_uri_replace = ".*sayings_,'/'"	
+}

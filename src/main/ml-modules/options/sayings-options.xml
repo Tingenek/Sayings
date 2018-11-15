@@ -1,0 +1,14 @@
+<options xmlns='http://marklogic.com/appservices/search'>
+  <search-option>unfiltered</search-option>
+  <quality-weight>0</quality-weight>
+  <values name="categories">
+    <range type="xs:string">
+      <element ns="" name="category"/>
+    </range>
+  </values>
+  <values name="people">
+    <range type="xs:string">
+      <element ns="" name="person"/>
+    </range>
+  </values>
+</options>

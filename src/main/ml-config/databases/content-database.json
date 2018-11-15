@@ -1,0 +1,19 @@
+{
+  "database-name" : "%%DATABASE%%",
+  "range-element-index" : [ {
+    "scalar-type" : "string",
+    "namespace-uri" : "",
+    "localname" : "category",
+    "collation" : "http://marklogic.com/collation/",
+    "range-value-positions" : false,
+    "invalid-values" : "reject"
+  } ],
+  "range-element-index" : [ {
+    "scalar-type" : "string",
+    "namespace-uri" : "",
+    "localname" : "person",
+    "collation" : "http://marklogic.com/collation/",
+    "range-value-positions" : false,
+    "invalid-values" : "reject"
+  } ]
+}

@@ -1,0 +1,5 @@
+{
+  "role-name" : "sayings-nobody",
+  "description" : "Unauthenticated user",
+  "role" : [ ]
+}
