@@ -7,8 +7,7 @@
     "collation" : "http://marklogic.com/collation/",
     "range-value-positions" : false,
     "invalid-values" : "reject"
-  } ],
-  "range-element-index" : [ {
+  },{
     "scalar-type" : "string",
     "namespace-uri" : "",
     "localname" : "person",
