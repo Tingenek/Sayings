@@ -1,5 +1,7 @@
 <options xmlns='http://marklogic.com/appservices/search'>
   <search-option>unfiltered</search-option>
+  <transform-results apply="raw" />
+  <searchable-expression>/saying</searchable-expression>
   <quality-weight>0</quality-weight>
   <values name="categories">
     <range type="xs:string">
@@ -11,4 +13,9 @@
       <element ns="" name="person"/>
     </range>
   </values>
+ <constraint name="cat">
+    <value>
+      <json-property>category</json-property>
+    </value>
+  </constraint>
 </options>
